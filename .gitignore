@@ -30,6 +30,7 @@
 *.exe
 *.out
 *.app
+/HexagonEngine
 
 SFML-2.5.1/*
 Hexagon Game Engine.layout
