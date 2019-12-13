@@ -49,7 +49,7 @@ namespace Hexagon {
     class SpriteLoader {
         public:
             static string ResourceLocation;
-            static std::vector<sf::Sprite> sprites(); // Stores all loaded sprites. Regardless of location loaded from.
+            static std::vector<sf::Sprite> *sprites; // Stores all loaded sprites. Regardless of location loaded from.
 
             SpriteLoader (string ResourceLocation);
             ~SpriteLoader();

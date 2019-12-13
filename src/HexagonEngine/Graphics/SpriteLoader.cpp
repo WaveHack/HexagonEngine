@@ -44,15 +44,21 @@ using namespace std;
 using namespace Hexagon;
 
 string SpriteLoader::ResourceLocation;
-std::vector<sf::Sprite> sprites();
+std::vector<sf::Sprite>* SpriteLoader::sprites;
 
 // Constructor for Spriteloader class
 SpriteLoader::SpriteLoader(string ResourceLocation) {
+    if (sprites == NULL) {
+        sprites = new std::vector<sf::Sprite>();
+    }
+
     InitSpriteLoader(ResourceLocation);
 }
 
 // Deconstructor for Spriteloader class
-SpriteLoader::~SpriteLoader() {}
+SpriteLoader::~SpriteLoader() {
+    delete sprites;
+}
 
 // Initialization Method
 void SpriteLoader::InitSpriteLoader(string ResourceLocation) {
@@ -94,7 +100,7 @@ sf::Texture SpriteLoader::LoadTexture(string name, int RectSizeX, int RectSizeY,
 
 bool SpriteLoader::AddSprite(sf::Sprite sprite) {
     try {
-        SpriteLoader::sprites().push_back(sprite);
+        SpriteLoader::sprites->push_back(sprite);
     } catch(exception e) {
         cout << "[ERROR]HE: SpriteLoader: An error occured whilst adding the Sprite to the sprite-vector!" << endl;
         return false;
