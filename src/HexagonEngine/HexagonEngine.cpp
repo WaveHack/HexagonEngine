@@ -72,7 +72,7 @@ void Engine::Start() {
 
     spriteLoader->LoadSprite("MissingTexture.png", 16, 16, 0, 0, true, false);
 
-    sprite = SpriteLoader::sprites->back();
+    sprite = *SpriteLoader::sprites->back();
 
      // Gameloop
     while(hexWindow.isOpen()) {

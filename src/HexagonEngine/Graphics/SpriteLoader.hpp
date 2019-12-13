@@ -49,7 +49,7 @@ namespace Hexagon {
     class SpriteLoader {
         public:
             static string ResourceLocation;
-            static std::vector<sf::Sprite> *sprites; // Stores all loaded sprites. Regardless of location loaded from.
+            static std::vector<sf::Sprite*>* sprites; // Stores all loaded sprites. Regardless of location loaded from.
 
             SpriteLoader (string ResourceLocation);
             ~SpriteLoader();
@@ -60,8 +60,8 @@ namespace Hexagon {
             string GetResourceLocation();
         private:
 
-            bool AddSprite(sf::Sprite sprite); // Used to add a Sprite to the Engine instance
-            sf::Texture LoadTexture(string name, int RectSizeX, int RectSizeY, int RectLocX, int RectLocY); // Private Method, used for loading Textures from files
+            bool AddSprite(sf::Sprite* sprite); // Used to add a Sprite to the Engine instance
+            sf::Texture* LoadTexture(string name, int RectSizeX, int RectSizeY, int RectLocX, int RectLocY); // Private Method, used for loading Textures from files
     };
 }
 #endif // HEXAGON_SPRITELOADER_HPP

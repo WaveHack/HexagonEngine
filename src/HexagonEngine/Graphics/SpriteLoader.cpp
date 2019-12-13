@@ -44,12 +44,12 @@ using namespace std;
 using namespace Hexagon;
 
 string SpriteLoader::ResourceLocation;
-std::vector<sf::Sprite>* SpriteLoader::sprites;
+std::vector<sf::Sprite*>* SpriteLoader::sprites;
 
 // Constructor for Spriteloader class
 SpriteLoader::SpriteLoader(string ResourceLocation) {
     if (sprites == NULL) {
-        sprites = new std::vector<sf::Sprite>();
+        sprites = new std::vector<sf::Sprite*>();
     }
 
     InitSpriteLoader(ResourceLocation);
@@ -71,41 +71,41 @@ void SpriteLoader::InitSpriteLoader(string ResourceLocation) {
 void SpriteLoader::LoadSprite(string name, int RectSizeX, int RectSizeY, int RectLocX, int RectLocY, bool SmoothTexture, bool SetRepeated) {
     cout << "HE: SpriteLoader: Loading sprite " << name << endl;
 
-    sf::Texture texture = LoadTexture(name, RectSizeX, RectSizeY, RectLocX, RectLocY); // Load Texture
+    sf::Texture* texture = LoadTexture(name, RectSizeX, RectSizeY, RectLocX, RectLocY); // Load Texture
 
-    texture.setSmooth(SmoothTexture); // Set texture smoothing
-    texture.setRepeated(SetRepeated); // Set texture repeating
+    texture->setSmooth(SmoothTexture); // Set texture smoothing
+    texture->setRepeated(SetRepeated); // Set texture repeating
 
-    sf::Sprite sprite;
-    sprite.setTexture(texture);
+    sf::Sprite* sprite = new sf::Sprite;
+    sprite->setTexture(*texture);
     AddSprite(sprite);
 }
 
 // Method for loading Textures
-sf::Texture SpriteLoader::LoadTexture(string name, int RectSizeX, int RectSizeY, int RectLocX, int RectLocY) {
-    sf::Texture texture;
+sf::Texture* SpriteLoader::LoadTexture(string name, int RectSizeX, int RectSizeY, int RectLocX, int RectLocY) {
+    sf::Texture* texture = new sf::Texture;
 
     // Load the texture
-    if(!texture.loadFromFile(GetResourceLocation()+"/"+name, sf::IntRect(RectLocX, RectLocY, RectSizeX, RectSizeY))) {
-        cout << "[ERROR]HE: SpriteLoader: Texture failed to load! (" << name << ")" << endl;
+    if(!texture->loadFromFile(GetResourceLocation()+"/"+name, sf::IntRect(RectLocX, RectLocY, RectSizeX, RectSizeY))) {
+        cerr << "[ERROR]HE: SpriteLoader: Texture failed to load! (" << name << ")" << endl;
     }
 
     // Create the Texture
-    if(!texture.create(RectSizeX, RectSizeY)) {
-        cout << "[ERROR]HE: SpriteLoader: Texture failed to create! (" << name << ")" << endl;
+    if(!texture->create(RectSizeX, RectSizeY)) {
+        cerr << "[ERROR]HE: SpriteLoader: Texture failed to create! (" << name << ")" << endl;
     }
 
     return texture;
 }
 
-bool SpriteLoader::AddSprite(sf::Sprite sprite) {
+bool SpriteLoader::AddSprite(sf::Sprite* sprite) {
     try {
         SpriteLoader::sprites->push_back(sprite);
     } catch(exception e) {
         cout << "[ERROR]HE: SpriteLoader: An error occured whilst adding the Sprite to the sprite-vector!" << endl;
         return false;
     }
-    cout << sprite.getTexture();
+    cout << sprite->getTexture();
 
     return true;
 }
