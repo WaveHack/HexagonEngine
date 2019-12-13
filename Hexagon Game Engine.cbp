@@ -15,11 +15,11 @@
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add library="SFML-2.5.1-windows-gcc-7.3.0-mingw-32-bit/SFML-2.5.1/lib/libsfml-audio-d.a" />
-					<Add library="SFML-2.5.1-windows-gcc-7.3.0-mingw-32-bit/SFML-2.5.1/lib/libsfml-graphics-d.a" />
-					<Add library="SFML-2.5.1-windows-gcc-7.3.0-mingw-32-bit/SFML-2.5.1/lib/libsfml-network-d.a" />
-					<Add library="SFML-2.5.1-windows-gcc-7.3.0-mingw-32-bit/SFML-2.5.1/lib/libsfml-system-d.a" />
-					<Add library="SFML-2.5.1-windows-gcc-7.3.0-mingw-32-bit/SFML-2.5.1/lib/libsfml-window-d.a" />
+					<Add library="SFML-2.5.1/lib/libsfml-audio-d.a" />
+					<Add library="SFML-2.5.1/lib/libsfml-graphics-d.a" />
+					<Add library="SFML-2.5.1/lib/libsfml-network-d.a" />
+					<Add library="SFML-2.5.1/lib/libsfml-system-d.a" />
+					<Add library="SFML-2.5.1/lib/libsfml-window-d.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -42,10 +42,10 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add directory="SFML-2.5.1-windows-gcc-7.3.0-mingw-32-bit/SFML-2.5.1/include" />
+			<Add directory="SFML-2.5.1/include" />
 		</Compiler>
 		<Linker>
-			<Add directory="SFML-2.5.1-windows-gcc-7.3.0-mingw-32-bit/SFML-2.5.1/lib" />
+			<Add directory="SFML-2.5.1/lib" />
 		</Linker>
 		<Unit filename="TODO.txt" />
 		<Unit filename="src/HexagonEngine/Graphics/SpriteLoader.cpp" />
